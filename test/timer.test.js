@@ -17,7 +17,7 @@ describe('Timer', () => {
 
         
 
-        const uri = process.env.MONGO_URI; 
+        const uri = process.env.MONGO_URI || 'mongodb://localhost:27017/f1-reaction-timer'; 
         console.log("Connecting to MongoDB with URI:", uri);
       
         await mongoose.connect(uri, {
