@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 
 
 router.post('/register', async (req, res) => {
+    console.log(req.body);
     const { email, password, role } = req.body;
 
     try {
@@ -17,7 +18,8 @@ router.post('/register', async (req, res) => {
 
         res.status(201).json({ msg: 'User registered successfully' });
     } catch (error) {
-        res.status(500).json({ msg: 'Server error' });
+      console.log(error);
+        res.status(500).json(error);
     }
 });
 

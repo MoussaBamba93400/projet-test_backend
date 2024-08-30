@@ -23,7 +23,7 @@ router.get('/get-reaction-times/:userId', authMiddleware, async (req, res) => {
 
     try {
         const times = await Timer.find({ user_id: userId }).sort({ createdAt: -1 });
-        res.json(times);
+        res.status(200).json(times);
     } catch (error) {
         res.status(500).json({ msg: 'Server error' });
     }
