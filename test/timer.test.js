@@ -3,6 +3,8 @@ const chaiHttp = require('chai-http');
 const app = require('../index');
 const Timer = require('../models/Timer');
 const User = require('../models/User');
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 chai.use(chaiHttp);
 chai.should();
@@ -12,6 +14,19 @@ describe('Timer', () => {
     let userId;
 
     before(async () => {
+
+        
+
+        const uri = process.env.MONGO_URI; 
+        console.log("Connecting to MongoDB with URI:", uri);
+      
+        await mongoose.connect(uri, {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+        });
+
+        
+
         await Timer.deleteMany({});
         await User.deleteMany({});
 
